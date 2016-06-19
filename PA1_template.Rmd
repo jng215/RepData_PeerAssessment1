@@ -83,9 +83,8 @@ sum(is.na(datActivity))
 3. Create a new dataset that is equal to the original dataset but with the missing data filled in.
 
 ```{r, echo=TRUE}
-# create a new dataset called datActivity2, which will contains filled values for NAs
+# create a new dataset called datActivity2, which will contain filled values for NAs
 datActivity2 <- datActivity
-head(datActivity2,10)
 
 # fill in values for the NAs
 for (i in 1:nrow(datActivity)) {
@@ -95,19 +94,16 @@ for (i in 1:nrow(datActivity)) {
   }
 }
 head(datActivity2,10)
-
-# confirm that there is no missing value
-sum(is.na(datActivity2))
 ```
 
-4. Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?
+4. Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps? 
 
 ```{r, echo=TRUE}
 datStepsByDate2 <- aggregate(steps ~ date, data=datActivity2, sum, na.rm=TRUE)
 head(datStepsByDate2,10)
 ```
 
-**NOTE:  The impact of imputing missing data with the mean for the 5-minute interval causes the increase in counts for the 10766-step days (e.g. see 2012-10-01 above).  Such an increase is also evident in the new histogram #2 below.**
+**Remark: The impact of imputing missing data with the mean for the 5-minute interval causes the increase in counts for the 10766-step days (e.g. see 2012-10-01 above).  Such an increase is also evident in the new histogram #2 below (see the jump in Frequency for the 10,000 and 15,000 range).**
 
 ```{r, echo=TRUE}
 # The histogram is now

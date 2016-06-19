@@ -176,21 +176,10 @@ sum(is.na(datActivity))</code></pre>
 <li><p>Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.</p></li>
 <li><p>Create a new dataset that is equal to the original dataset but with the missing data filled in.</p></li>
 </ol>
-<pre class="r"><code># create a new dataset called datActivity2, which will contains filled values for NAs
+<pre class="r"><code># create a new dataset called datActivity2, which will contain filled values for NAs
 datActivity2 &lt;- datActivity
-head(datActivity2,10)</code></pre>
-<pre><code>##    steps       date interval
-## 1     NA 2012-10-01        0
-## 2     NA 2012-10-01        5
-## 3     NA 2012-10-01       10
-## 4     NA 2012-10-01       15
-## 5     NA 2012-10-01       20
-## 6     NA 2012-10-01       25
-## 7     NA 2012-10-01       30
-## 8     NA 2012-10-01       35
-## 9     NA 2012-10-01       40
-## 10    NA 2012-10-01       45</code></pre>
-<pre class="r"><code># fill in values for the NAs
+
+# fill in values for the NAs
 for (i in 1:nrow(datActivity)) {
   if (is.na(datActivity$steps[i])) {
     intIndex = which(datActivity$interval[i] == datAvgStepsByInterval$interval)    
@@ -209,9 +198,6 @@ head(datActivity2,10)</code></pre>
 ## 8  0.8679245 2012-10-01       35
 ## 9  0.0000000 2012-10-01       40
 ## 10 1.4716981 2012-10-01       45</code></pre>
-<pre class="r"><code># confirm that there is no missing value
-sum(is.na(datActivity2))</code></pre>
-<pre><code>## [1] 0</code></pre>
 <ol start="4" style="list-style-type: decimal">
 <li>Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?</li>
 </ol>
@@ -228,7 +214,7 @@ head(datStepsByDate2,10)</code></pre>
 ## 8  2012-10-08 10766.19
 ## 9  2012-10-09 12811.00
 ## 10 2012-10-10  9900.00</code></pre>
-<p><strong>NOTE: The impact of imputing missing data with the mean for the 5-minute interval causes the increase in counts for the 10766-step days (e.g. see 2012-10-01 above). Such an increase is also evident in the new histogram #2 below.</strong></p>
+<p><strong>Remark: The impact of imputing missing data with the mean for the 5-minute interval causes the increase in counts for the 10766-step days (e.g. see 2012-10-01 above). Such an increase is also evident in the new histogram #2 below (see the jump in Frequency for the 10,000 and 15,000 range).</strong></p>
 <pre class="r"><code># The histogram is now
 hist( datStepsByDate2$steps, 
       main=&quot;Histogram of Steps Taken Each Day (#2)&quot;, 
