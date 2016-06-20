@@ -240,29 +240,29 @@ median(datStepsByDate2$steps)</code></pre>
 <ol style="list-style-type: decimal">
 <li>Create a new factor variable in the dataset with two levels - “weekday” and “weekend” indicating whether a given date is a weekday or weekend day.</li>
 </ol>
-<pre class="r"><code>datActivity2$weekday &lt;- weekdays(as.Date(datActivity2$date))
-datActivity2$weeklevel &lt;- &quot;?&quot;  
+<pre class="r"><code>datActivity2$weeklevel &lt;- &quot;?&quot;  
 for (i in 1:nrow(datActivity2)) {
-  if (datActivity2$weekday[i] %in% c(&quot;Saturday&quot;, &quot;Sunday&quot;) ) {
+  weekday &lt;- weekdays(as.Date(datActivity2[i,]$date))
+  if (weekday %in% c(&quot;Saturday&quot;, &quot;Sunday&quot;) ) {
     datActivity2$weeklevel[i] &lt;- &quot;Weekend&quot;
-  } else if (datActivity2$weekday[i] %in% c(&quot;Monday&quot;, &quot;Tuesday&quot;, &quot;Wednesday&quot;, &quot;Thursday&quot;, &quot;Friday&quot;))  {
+  } else if (weekday %in% c(&quot;Monday&quot;, &quot;Tuesday&quot;, &quot;Wednesday&quot;, &quot;Thursday&quot;, &quot;Friday&quot;))  {
     datActivity2$weeklevel[i] &lt;- &quot;Weekday&quot;
   } else {
     datActivity2$weeklevel[i] &lt;- &quot;?&quot;
   }
 }
 head(datActivity2,10)</code></pre>
-<pre><code>##        steps       date interval weekday weeklevel
-## 1  1.7169811 2012-10-01        0  Monday   Weekday
-## 2  0.3396226 2012-10-01        5  Monday   Weekday
-## 3  0.1320755 2012-10-01       10  Monday   Weekday
-## 4  0.1509434 2012-10-01       15  Monday   Weekday
-## 5  0.0754717 2012-10-01       20  Monday   Weekday
-## 6  2.0943396 2012-10-01       25  Monday   Weekday
-## 7  0.5283019 2012-10-01       30  Monday   Weekday
-## 8  0.8679245 2012-10-01       35  Monday   Weekday
-## 9  0.0000000 2012-10-01       40  Monday   Weekday
-## 10 1.4716981 2012-10-01       45  Monday   Weekday</code></pre>
+<pre><code>##        steps       date interval weeklevel
+## 1  1.7169811 2012-10-01        0   Weekday
+## 2  0.3396226 2012-10-01        5   Weekday
+## 3  0.1320755 2012-10-01       10   Weekday
+## 4  0.1509434 2012-10-01       15   Weekday
+## 5  0.0754717 2012-10-01       20   Weekday
+## 6  2.0943396 2012-10-01       25   Weekday
+## 7  0.5283019 2012-10-01       30   Weekday
+## 8  0.8679245 2012-10-01       35   Weekday
+## 9  0.0000000 2012-10-01       40   Weekday
+## 10 1.4716981 2012-10-01       45   Weekday</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Make a panel plot containing a time series plot (i.e. type = “l”) of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). See the README file in the GitHub repository to see an example of what this plot should look like using simulated data.</li>
 </ol>

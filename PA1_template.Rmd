@@ -126,12 +126,12 @@ median(datStepsByDate2$steps)
 1. Create a new factor variable in the dataset with two levels - "weekday" and "weekend" indicating whether a given date is a weekday or weekend day.
 
 ```{r, echo=TRUE}
-datActivity2$weekday <- weekdays(as.Date(datActivity2$date))
 datActivity2$weeklevel <- "?"  
 for (i in 1:nrow(datActivity2)) {
-  if (datActivity2$weekday[i] %in% c("Saturday", "Sunday") ) {
+  weekday <- weekdays(as.Date(datActivity2[i,]$date))
+  if (weekday %in% c("Saturday", "Sunday") ) {
     datActivity2$weeklevel[i] <- "Weekend"
-  } else if (datActivity2$weekday[i] %in% c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday"))  {
+  } else if (weekday %in% c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday"))  {
     datActivity2$weeklevel[i] <- "Weekday"
   } else {
     datActivity2$weeklevel[i] <- "?"
