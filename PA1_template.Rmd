@@ -4,7 +4,6 @@ date: "June 18, 2016"
 output: html_document
 ---
 
-
 ## Peer Graded Assignment - Course Project 1
 
 
